@@ -1,0 +1,177 @@
+//Reset
+@import "./reset.sass"
+//Variables
+@import "./variables.sass"
+//Include Fonts
+@font-face
+  font-family: 'Montserrat', sans-serif
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff"),url("../fonts/Montserrat-Regular.ttf") format("ttf")
+html, body
+  min-height: 100%
+  width: 100%
+html
+  height: 100%
+  scroll-behavior: smooth
+body
+  display: flex
+  flex-direction: column
+  height: auto
+  font-family: $font
+  font-size: $fontsize
+  color: $fontcolor
+  background: $bodyBgColor
+/*Новые стили для скролла*/
+::-webkit-scrollbar
+  width: 4px
+  height: 4px
+  border-radius: 5px
+  background-color: #C4C4C4
+::-webkit-scrollbar-thumb
+  border-radius: 10px
+  position: relative
+  background: $scrollbarColor
+//Input
+//input[type = "radio"]
+.radio-custom
+  & > input[type = "radio"]
+    & + label
+      font-size: 14px
+      line-height: 1.2
+      font-weight: 500
+      color: $radioBtnFontBoldColor
+      & > span
+        font-weight: 300
+        color: $radioBtnFontColor
+    &:checked,&:not(:checked)
+      position: absolute
+      left: -9999px
+    &:checked +label,&:not(:checked) + label
+      position: relative
+      padding-left: 28px
+      cursor: pointer
+      line-height: 20px
+      display: inline-block
+      color: $radioBtnColor
+      &:before
+        content: ''
+        position: absolute
+        left: 0
+        top: 0
+        width: 20px
+        height: 20px
+        border: 1px solid $radioBtnColor
+        border-radius: 100%
+        background: transparent
+      &:after
+        content: ''
+        width: 12px
+        height: 12px
+        background: $radioBtnHoverColor
+        position: absolute
+        top: 4px
+        left: 4px
+        border-radius: 100%
+        transition: all 0.2s ease
+    &:not(:checked) + label:after
+      opacity: 0
+      transform: scale(0)
+    &:checked + label:after
+      opacity: 1
+      transform: scale(1)
+    &:checked + label:before
+      border: 1px solid $radioBtnHoverColor
+//input[type = "checkbox"]
+.checkbox-custom
+  input[type = "checkbox"]
+    display: none
+    padding: 0
+    margin-bottom: 0
+    cursor: pointer
+    & + label
+      font-size: 14px
+      @media only screen and (min-width: 768px)
+        font-size: 16px
+    &:checked + label:after
+      content: ''
+      position: absolute
+      display: block
+      top: 4px
+      left: 9px
+      width: 6px
+      height: 14px
+      border: 1px solid $checkBoxHoverColor
+      border-width: 0 2px 2px 0
+      transform: rotate(45deg)
+    &:checked + label:before
+      border-color: $checkBoxHoverColor
+      transition: all .2s ease-in-out
+    &:checked + label
+      //color: $checkBoxHoverColor
+      transition: all .2s ease-in-out
+  label
+    position: relative
+    cursor: pointer
+    display: flex
+    align-items: center
+    font-size: 12px
+    @media only screen and (min-width: 768px)
+      font-size: 14px
+    &:before
+      content: ''
+      appearance: none
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 100%
+      max-width: 22px
+      position: relative
+      background-color: transparent
+      border: 1px solid $checkBoxColor
+      border-radius: 4px
+      padding: 10px
+      cursor: pointer
+      margin-right: 5px
+//input[type = "text"]
+.base-input
+  padding: 10px
+  width: 100%
+  font-size: 12px
+  line-height: 1.25
+  font-weight: 400
+  border: 1px solid rgba(40, 47, 54, 0.15)
+  border-radius: 4px
+//Базовые стили
+.content
+  flex: 1 1 auto
+.container
+  width: 100%
+  max-width: 976px
+  padding: 0 16px
+  margin: 0 auto
+//btn
+.btn
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  padding: 7px 14px
+  text-align: center
+  border-radius: 5px
+  color: $btnColor
+  background: $btnBgColor
+  transition: all .4s ease-in-out
+  &:hover
+    color: $btnHoverColor
+    background: $btnBgHoverColor
+//Адаптивное изображение
+.ibg
+  position: relative
+  img
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    display: block
+    width: 100%
+    height: 100%
+    object-fit: cover
